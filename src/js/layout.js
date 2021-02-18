@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import ScrollToTop from "./views/scrollToTop";
 
 import { Home } from "./views/home";
+import { Personaje } from "./views/personaje";
+import { Planeta } from "./views/planeta";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Favorites } from "./component/favorites";
 import { Footer } from "./component/footer";
-
+import { People } from "./component/people";
+import { Planets } from "./component/planets";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -20,7 +23,7 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<Favorites />
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -31,8 +34,17 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route>
-							<h1>Not found!</h1>
+						<Route exact path="/people/:theid">
+							<People />
+						</Route>
+						<Route exact path="/planets/:theid">
+							<Planets />
+						</Route>
+						<Route exact path="/personaje/:theid">
+							<Personaje />
+						</Route>
+						<Route exact path="/planeta/:theid">
+							<Planeta />
 						</Route>
 					</Switch>
 					<Footer />
