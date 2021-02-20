@@ -4,14 +4,16 @@ import rigoImage from "../../img/sw.jpg";
 
 export const Favorites = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-dark mb-3">
 			<Link to="/">
 				<img src={rigoImage} height="60" />
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">
 					<div className="card">
-						<div className="card-body">Favorites</div>
+						<button type="button" className="btn btn-dark">
+							Favorites
+						</button>
 					</div>
 				</Link>
 			</div>

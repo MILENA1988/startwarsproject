@@ -1,24 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Card, Button, ButtonToolbar } from "react-bootstrap";
+import { Card, Button, ButtonToolbar, Container, Row, Col } from "react-bootstrap";
 
 export const Planets = () => {
 	const { store, actions } = useContext(Context);
-
 	useEffect(() => {
 		actions.loadPlanets();
 	}, []);
-	//console.log(store.peoples);
 
 	return (
-		<div className="container">
-			<h1>Planetas</h1>
-			<div className="row">
-				<div className="planets">
-					{store.planets.map((planets, i) => {
-						return (
-							<Card style={{ width: "18rem" }} key={i}>
+		<Container className="container" fluid>
+			<h1 style={{ color: "pink" }}>Planetas</h1>
+			<Row>
+				{store.planets.map((planets, i) => {
+					return (
+						<Col md={4} className="mt-1 mb-3" key={i}>
+							<Card>
 								<Card.Img
 									variant="top"
 									src="https://okdiario.com/img/2016/12/02/origen-nomre-planetas-sistema-solar-a-655x368.jpg"
@@ -34,21 +32,21 @@ export const Planets = () => {
 									<ButtonToolbar
 										className="justify-content-between"
 										arial-label="Toolbar with Button groups">
-										<Link to="/planeta/whatever">
+										<Link to={`/planeta/${i}`}>
 											<Button variant="primary">Learn More!</Button>
 										</Link>
-										<Link>
-											<Button variant="outline-warning">
-												<i className="far fa-heart" />
-											</Button>
-										</Link>
+										{/* <Link> */}
+										<Button variant="outline-warning">
+											<i className="far fa-heart" />
+										</Button>
+										{/* </Link> */}
 									</ButtonToolbar>
 								</Card.Footer>
 							</Card>
-						);
-					})}
-				</div>
-			</div>
-		</div>
+						</Col>
+					);
+				})}
+			</Row>
+		</Container>
 	);
 };
