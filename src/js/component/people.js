@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card, Button, ButtonToolbar, Row, Container, Col } from "react-bootstrap";
 
-export const People = () => {
+export const People = props => {
 	const { store, actions } = useContext(Context);
+	const { theid } = useParams();
 
 	useEffect(() => {
 		actions.loadPeople();
@@ -37,7 +38,8 @@ export const People = () => {
 										<Link to={`/personaje/${i}`}>
 											<Button variant="primary">Learn More!</Button>
 										</Link>
-										<Link>
+
+										<Link onClick={() => actions.addFavorite(people.name, "persona")}>
 											<Button variant="outline-warning">
 												<i className="far fa-heart" />
 											</Button>

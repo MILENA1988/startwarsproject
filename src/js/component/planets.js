@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Card, Button, ButtonToolbar, Container, Row, Col } from "react-bootstrap";
 
-export const Planets = () => {
+export const Planets = props => {
 	const { store, actions } = useContext(Context);
+	const { theid } = useParams();
 	useEffect(() => {
 		actions.loadPlanets();
 	}, []);
@@ -35,11 +36,12 @@ export const Planets = () => {
 										<Link to={`/planeta/${i}`}>
 											<Button variant="primary">Learn More!</Button>
 										</Link>
-										{/* <Link> */}
-										<Button variant="outline-warning">
-											<i className="far fa-heart" />
-										</Button>
-										{/* </Link> */}
+
+										<Link onClick={() => actions.addFavorite(planets.name, "planeta")}>
+											<Button variant="outline-warning">
+												<i className="far fa-heart" />
+											</Button>
+										</Link>
 									</ButtonToolbar>
 								</Card.Footer>
 							</Card>
