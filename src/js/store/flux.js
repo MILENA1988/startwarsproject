@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (count == 0) {
 					setStore({
 						favorites: [
-							store.favorites,
+							...store.favorites,
 							{
 								name: name,
 								type: type
@@ -43,7 +43,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						]
 					});
 				}
-				console.log(store.favorites);
+			},
+
+			deleteFavorite: id => {
+				const store = getStore();
+
+				const newFavorites = store.favorites.filter((item, i) => i !== id);
+				setStore({ favorites: newFavorites });
 			}
 		}
 	};

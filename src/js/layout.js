@@ -9,7 +9,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
-import { Favorites } from "./component/favorites";
+import { Menu } from "./component/favorites";
 import { Footer } from "./component/footer";
 import { People } from "./component/people";
 import { Planets } from "./component/planets";
@@ -23,7 +23,7 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Favorites />
+					<Menu />
 					<Switch>
 						<Route exact path="/">
 							<Home />
